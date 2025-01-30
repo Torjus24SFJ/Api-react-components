@@ -1,12 +1,12 @@
 import './App.css'
-import { Skeleton } from './components/Skeleton/Skeleton'
+import { Countries } from './components/Countries/Countries'
 
 function App() {
 
   return (
     <>
     <main>
-     <Skeleton />
+     <Countries />
     </main>
     </>
   )

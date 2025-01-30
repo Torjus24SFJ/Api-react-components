@@ -1,9 +1,9 @@
 // import { useState } from "react";
-import style from "./Skeleton.module.css";
+import style from "./Countries.module.css";
 import { GridData } from "../GridData/GridData";
 import { SearchData } from "../SearchData/SearchData";
 
-export function Skeleton() {
+export function Countries() {
   
   
   return (
