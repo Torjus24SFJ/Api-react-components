@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
 import style from "./SearchData.module.css";
+import { useState, useEffect } from "react";
 
 export const SearchData = () => {
   const [searchTerm, setSearchTerm] = useState("");

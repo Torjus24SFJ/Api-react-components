@@ -9,7 +9,7 @@ export const GridData = () => {
       try {
         const response = await fetch("https://restcountries.com/v2/all");
         const countries = await response.json();
-        setCountries(countries.slice(0, 16));
+        setCountries(countries.splice(0, 16));
       } catch (error) {
         console.log("Error fetching flags:", error);
       }
