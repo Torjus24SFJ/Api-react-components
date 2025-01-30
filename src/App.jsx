@@ -1,11 +1,13 @@
 import './App.css'
-import { ThemeSwitcher } from './components/ThemeSwitcher/ThemeSwitcher'
+import { Skeleton } from './components/Skeleton/Skeleton'
 
 function App() {
 
   return (
     <>
-     <ThemeSwitcher />
+    <main>
+     <Skeleton />
+    </main>
     </>
   )
 }

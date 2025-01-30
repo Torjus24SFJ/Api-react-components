@@ -1,9 +1,9 @@
 // import { useState } from "react";
-import style from "./ThemeSwitcher.module.css";
-import { ThemeData } from "./GridData";
-import { SearchData } from "./SearchData";
+import style from "./Skeleton.module.css";
+import { GridData } from "../GridData/GridData";
+import { SearchData } from "../SearchData/SearchData";
 
-export function ThemeSwitcher() {
+export function Skeleton() {
   
   
   return (
@@ -21,7 +21,7 @@ export function ThemeSwitcher() {
         </div>
       </div>
       <SearchData />
-      <ThemeData />
+      <GridData />
     </section>
   );
 }

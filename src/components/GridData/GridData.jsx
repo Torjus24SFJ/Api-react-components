@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import style from "./ThemeSwitcher.module.css";
+import style from "./GridData.module.css";
 
-export const ThemeData = () => {
+export const GridData = () => {
   const [countries, setCountries] = useState([]);
 
   useEffect(() => {
