@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import style from "./ThemeSwitcher.module.css";
+import style from "./SearchData.module.css";
 
 export const SearchData = () => {
   const [searchTerm, setSearchTerm] = useState("");
