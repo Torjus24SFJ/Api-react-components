@@ -5,7 +5,6 @@ import { SearchData } from "../SearchData/SearchData";
 
 export function Countries() {
   
-  
   return (
     <section
       className={style.section_flags_page}
