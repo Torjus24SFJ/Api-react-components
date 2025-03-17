@@ -1,33 +1,35 @@
+import { useState } from "react";
+import PropTypes from "prop-types"; 
 import style from "./SearchData.module.css";
-import { useState, useEffect } from "react";
 
-export const SearchData = () => {
+export const SearchData = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [names, setNames] = useState([]);
 
-  useEffect(() => {
-    if (searchTerm === "") {
+  const handleSearchChange = async (e) => {
+    setSearchTerm(e.target.value);
+    if (e.target.value === "") {
       setNames([]);
       return;
     }
 
-    const fetchNames = async () => {
-      try {
-        const response = await fetch(
-          `https://restcountries.com/v3.1/name/${searchTerm}`
-        );
-        if (!response.ok) throw new Error("Country not found");
+    try {
+      const response = await fetch(
+        `https://restcountries.com/v3.1/name/${e.target.value}`
+      );
+      const data = await response.json();
+      setNames(data);
+    } catch (error) {
+      console.log("Error fetching names:", error);
+      setNames([]);
+    }
+  };
 
-        const data = await response.json();
-        setNames(data);
-      } catch (error) {
-        console.log("Error fetching names:", error);
-        setNames([]);
-      }
-    };
-
-    fetchNames();
-  }, [searchTerm]);
+  const handleSearchSubmit = (country) => {
+    onSearch(country);
+    setSearchTerm(country.name.common);  
+    setNames([]);
+  };
 
   return (
     <div className={style.search_container}>
@@ -51,14 +53,22 @@ export const SearchData = () => {
           className={style.searchCountry}
           placeholder="Search for a country..."
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          onChange={handleSearchChange}
         />
       </div>
-      <ul className={style.search_results}>
-        {names.slice(0, 10).map((country) => (
-          <li key={country.cca2}>{country.name.common}</li>
-        ))}
-      </ul>
+      {names.length > 0 && (
+        <ul className={style.search_results}>
+          {names.map((country) => (
+            <li key={country.cca2} onClick={() => handleSearchSubmit(country)}>
+              {country.name.common}
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
+};
+
+SearchData.propTypes = {
+  onSearch: PropTypes.func.isRequired, 
 };

@@ -1,10 +1,14 @@
-// import { useState } from "react";
+import { useState } from "react";
 import style from "./Countries.module.css";
 import { GridData } from "../GridData/GridData";
 import { SearchData } from "../SearchData/SearchData";
 
 export function Countries() {
-  
+  const [searchResult, setSearchResult] = useState(null)
+
+  const handleSearchResult = (country) => {
+    setSearchResult(country)
+  }
   return (
     <section
       className={style.section_flags_page}
@@ -19,8 +23,8 @@ export function Countries() {
           </span>
         </div>
       </div>
-      <SearchData />
-      <GridData />
+      <SearchData onSearch={handleSearchResult} />
+      <GridData searchResult={searchResult} />
     </section>
   );
 }
